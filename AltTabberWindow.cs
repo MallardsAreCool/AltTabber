@@ -68,7 +68,7 @@ namespace AltTabber
             nid.uFlags = Constants.NIF_ICON | Constants.NIF_MESSAGE | Constants.NIF_TIP;
             nid.uCallbackMessage = Constants.WM_APP + 1;
 
-            Icon icon = new("Assets/AltTabber.ico", 32, 32);
+            Icon icon = new("icon.ico", 32, 32);
             nid.hIcon = icon.Handle;
             nid.szTip = "Alt Tabber";
             Win32.Shell_NotifyIcon(Constants.NIM_ADD, ref nid);

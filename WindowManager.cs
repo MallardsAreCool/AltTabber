@@ -8,13 +8,11 @@ namespace AltTabber
     internal static class WindowManager
     {
 
-        private static readonly Dictionary<string, char> _processMap = new()
-        {
-            { "code", 'v' }
-        };
+        private static Dictionary<string, char> _processMap = new();
 
         public static List<WindowInfo> GetOpenWindows()
         {
+            _processMap = Config.LoadMappingConfig();
             List<WindowInfo> result = new();
             IntPtr shellWindow = Win32.GetShellWindow();
 
@@ -64,7 +62,7 @@ namespace AltTabber
                 return true;
             }, IntPtr.Zero);
 
-            return result.OrderBy(o => o.Title).ToList();
+            return result.OrderBy(o => o.HotKey).ToList();
         }
     }
 }
