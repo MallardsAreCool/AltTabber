@@ -1,0 +1,12 @@
+# Ignore build artifacts
+bin/
+obj/
+
+# Ignore Visual Studio backup and user-specific files
+*.user
+*.suo
+*.bk
+*.log
+
+# Ignore VS Code settings (if you use it)
+.vscode/
