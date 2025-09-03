@@ -522,9 +522,26 @@ namespace AltTabber
                 {
                     Win32.ShowWindow(hwnd, Constants.SW_RESTORE); // Restore only if minimized
                 }
+                else if (placement.showCmd == Constants.SW_HIDE)
+                {
+                    Win32.ShowWindow(hwnd, Constants.SW_SHOW);
+                }
             }
-            Win32.BringWindowToTop(hwnd);
-            Win32.SetForegroundWindow(hwnd);
+
+            uint foreThread = Win32.GetWindowThreadProcessId(Win32.GetForegroundWindow(), IntPtr.Zero);
+            uint appThread = Win32.GetCurrentThreadId();
+            if (foreThread != appThread)
+            {
+                Win32.AttachThreadInput(appThread, foreThread, true);
+                Win32.BringWindowToTop(hwnd);
+                Win32.SetForegroundWindow(hwnd);
+                Win32.AttachThreadInput(appThread, foreThread, false);
+            }
+            else
+            {
+                Win32.BringWindowToTop(hwnd);
+                Win32.SetForegroundWindow(hwnd);
+            }
 
             HidePopup();
         }
