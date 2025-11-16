@@ -144,6 +144,9 @@ namespace AltTabber
                     }
 
                     return IntPtr.Zero;
+                case Constants.WM_KILLFOCUS:
+                    HidePopup();
+                    break;
             }
 
             return Win32.DefWindowProc(hWnd, msg, wParam, lParam);

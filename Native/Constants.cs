@@ -37,6 +37,7 @@ namespace AltTabber.Native
         public const uint WM_MOUSEMOVE = 0x0200;
         public const uint WM_MOUSELEAVE = 0x02A3;
         public const uint WM_SETCURSOR = 0x0020;
+        public const uint WM_KILLFOCUS = 0x0008;
         public const int ID_EXIT = 1;
         public const int LINE_HEIGHT = 50;
         public const int WINDOW_WIDTH = 640;

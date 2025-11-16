@@ -62,7 +62,10 @@ namespace AltTabber
                 return true;
             }, IntPtr.Zero);
 
-            return result.OrderBy(o => o.HotKey).ToList();
+            return result
+                .OrderBy(o => o.HotKey)
+                .ThenBy(o => o.Title)
+                .ToList();
         }
     }
 }
